@@ -506,17 +506,39 @@
   }
 
   .ig-posts-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 10px;
     margin-bottom: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+  }
+
+  .ig-posts-grid::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .ig-posts-grid::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 10px;
+  }
+
+  .ig-posts-grid::-webkit-scrollbar-thumb {
+    background: var(--muted);
+    border-radius: 10px;
   }
 
   .ig-post-embed {
     border-radius: var(--radius-sm);
     overflow: hidden;
-    background: var(--bg);
+    background: transparent;
     min-height: 200px;
+    flex-shrink: 0;
+    flex-basis: 65%;
+  }
+
+  .ig-post-embed:first-child {
+    min-height: 280px;
   }
 
   .ig-post-embed iframe,
