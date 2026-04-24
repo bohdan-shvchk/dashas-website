@@ -422,8 +422,28 @@
     <div class="form-note">🧡 Попередній запис на безкоштовний вебінар про те, як використовувати ШІ для економії часу</div>
   </div>
 
+  <!-- HIDDEN IFRAME FOR GOOGLE FORM SUBMIT -->
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+  <!-- HIDDEN GOOGLE FORM -->
+  <form id="googleForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdEzPIKaEFSzI1XcfnciomzxKBhKPYcZLAUW0J40IVAF3fRTg/formResponse" method="POST" target="hidden_iframe" style="display:none;">
+    <input type="text" name="emailAddress" id="gf_emailAddress"/>
+    <input type="text" name="entry.992584827" id="gf_email"/>
+    <input type="text" name="entry.1266491491" id="gf_name"/>
+    <input type="text" name="entry.1963628583" id="gf_role"/>
+    <input type="text" name="entry.407103134" id="gf_routine"/>
+    <input type="text" name="entry.887344103" id="gf_questions"/>
+    <input type="text" name="entry.87817360" id="gf_ai_exp"/>
+    <input type="text" name="entry.87817360_sentinel" value=""/>
+    <input type="text" name="entry.1114853388" id="gf_time_pref"/>
+    <input type="text" name="entry.1114853388_sentinel" value=""/>
+    <input type="hidden" name="fvv" value="1"/>
+    <input type="hidden" name="pageHistory" value="0"/>
+    <input type="hidden" name="partialResponse" value="[null,null,&quot;-8558888275019039374&quot;]"/>
+  </form>
+
   <!-- FORM -->
-  <form id="regForm" action="https://formsubmit.co/shevchukbodya@gmail.com" method="POST" novalidate>
+  <form id="regForm" novalidate>
 
     <!-- CONTACT -->
     <div class="form-card" id="formCard1">
@@ -595,9 +615,19 @@
     return true;
   }
 
+  let formSubmitted = false;
+
+  document.getElementById('hidden_iframe').addEventListener('load', function() {
+    if (formSubmitted) {
+      console.log('Google Form успішно відправлено');
+      showSuccess();
+    }
+  });
+
   form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
     if (!validateForm()) {
-      e.preventDefault();
       return;
     }
 
@@ -605,9 +635,28 @@
     btn.textContent = 'Надсилаємо…';
     btn.disabled = true;
 
+    const formData = new FormData(form);
+    const timePref = formData.get('time_pref') === 'other' ? document.getElementById('timeOtherInput').value : formData.get('time_pref');
+
+    document.getElementById('gf_emailAddress').value = formData.get('email');
+    document.getElementById('gf_email').value = formData.get('invite_email');
+    document.getElementById('gf_name').value = formData.get('name');
+    document.getElementById('gf_role').value = formData.get('role');
+    document.getElementById('gf_routine').value = formData.get('routine');
+    document.getElementById('gf_questions').value = formData.get('questions');
+    document.getElementById('gf_ai_exp').value = formData.get('ai_exp');
+    document.getElementById('gf_time_pref').value = timePref;
+
+    console.log('Відправляємо в Google Form...');
+
+    formSubmitted = true;
+    document.getElementById('googleForm').submit();
+
     setTimeout(() => {
-      showSuccess();
-    }, 1000);
+      if (formSubmitted) {
+        showSuccess();
+      }
+    }, 3000);
   });
 
   function showSuccess() {
