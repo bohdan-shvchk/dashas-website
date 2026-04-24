@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Реєстрація на вебінар — ШІ для роботи</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F0EDE6;
+    --card: #FFFFFF;
+    --text: #1C1A17;
+    --muted: #6B6760;
+    --accent: #D27A2D;
+    --accent-bg: #FBF0E4;
+    --btn-dark: #1C1A17;
+    --radius: 18px;
+    --radius-sm: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(240, 237, 230, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .nav-logo {
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-dot {
+    width: 8px; height: 8px;
+    background: #3DB87A;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .nav-back {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.15s;
+  }
+  .nav-back:hover { color: var(--text); }
+
+  /* CONTENT */
+  .page-wrap {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 16px 48px;
+  }
+
+  /* HEADER */
+  .form-header {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 24px 22px;
+    margin-bottom: 12px;
+  }
+
+  .form-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    background: var(--bg);
+    border-radius: 50px;
+    padding: 5px 12px;
+    margin-bottom: 14px;
+  }
+
+  .form-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.4px;
+    margin-bottom: 12px;
+    text-wrap: pretty;
+  }
+
+  .form-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 14px;
+    text-wrap: pretty;
+  }
+
+  .form-desc b { color: var(--text); }
+
+  .form-note {
+    background: var(--accent-bg);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    font-size: 13.5px;
+    color: var(--accent);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  /* FORM CARD */
+  .form-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 24px 22px;
+    margin-bottom: 12px;
+  }
+
+  .field-group {
+    margin-bottom: 20px;
+  }
+
+  .field-group:last-child { margin-bottom: 0; }
+
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  .label-hint {
+    font-size: 12.5px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  .required-star {
+    color: var(--accent);
+    margin-left: 2px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1.5px solid transparent;
+    border-radius: var(--radius-sm);
+    padding: 13px 15px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  input[type="text"]::placeholder,
+  input[type="email"]::placeholder,
+  textarea::placeholder {
+    color: rgba(107, 103, 96, 0.6);
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    border-color: var(--accent);
+    background: #fff;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.55;
+  }
+
+  /* RADIO GROUP */
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg);
+    border: 1.5px solid transparent;
+    border-radius: var(--radius-sm);
+    padding: 13px 15px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    font-size: 14.5px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  .radio-option:hover {
+    background: #F7F4EF;
+  }
+
+  .radio-option input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px; height: 20px;
+    border: 2px solid rgba(0,0,0,0.2);
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color 0.15s;
+    cursor: pointer;
+  }
+
+  .radio-option input[type="radio"]:checked {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+
+  .radio-option input[type="radio"]:checked::after {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px; height: 7px;
+    background: white;
+    border-radius: 50%;
+  }
+
+  .radio-option:has(input:checked) {
+    border-color: var(--accent);
+    background: var(--accent-bg);
+  }
+
+  /* OTHER input inside radio */
+  .radio-other-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg);
+    border: 1.5px solid transparent;
+    border-radius: var(--radius-sm);
+    padding: 10px 15px;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .radio-other-wrap:has(input[type="radio"]:checked) {
+    border-color: var(--accent);
+    background: var(--accent-bg);
+  }
+
+  .radio-other-input {
+    border: none !important;
+    background: transparent !important;
+    padding: 4px 0 !important;
+    flex: 1;
+    font-size: 14.5px !important;
+    border-bottom: 1.5px solid rgba(0,0,0,0.15) !important;
+    border-radius: 0 !important;
+  }
+
+  .radio-other-input:focus {
+    border-bottom-color: var(--accent) !important;
+  }
+
+  /* DIVIDER */
+  .field-divider {
+    height: 1px;
+    background: rgba(0,0,0,0.06);
+    margin: 22px 0;
+  }
+
+  /* SUBMIT BTN */
+  .submit-wrap {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--btn-dark);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 16px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .submit-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+  .submit-btn:active { transform: translateY(0); opacity: 1; }
+
+  .submit-note {
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 12px;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  /* SUCCESS STATE */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 48px 22px;
+  }
+
+  .success-screen.visible { display: block; }
+  .form-card.hidden { display: none; }
+  .submit-wrap.hidden { display: none; }
+  .form-header.hidden { display: none; }
+
+  .success-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .success-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-wrap: pretty;
+  }
+
+  .success-text {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--btn-dark);
+    color: white;
+    border-radius: 50px;
+    padding: 13px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+  .back-btn:hover { opacity: 0.8; }
+
+  @media (min-width: 520px) {
+    .page-wrap { padding-top: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-back">
+    ← Назад
+  </a>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-dot"></span>
+    ШІ для роботи
+  </a>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="form-header" id="formHeader">
+    <div class="form-badge">
+      <span class="nav-dot"></span>
+      Безкоштовний вебінар
+    </div>
+    <h1 class="form-title">Як не загубитись в світі ШІ та як використовувати його для економії часу</h1>
+    <p class="form-desc">Заповніть будь ласка форму для <b>попередньої реєстрації</b>. Якщо ви починаєте понеділок з відчуттям, що знову весь тиждень піде на задачі, які нікуди не рухають вас вперед — цей вебінар про це.</p>
+    <div class="form-note">🧡 Дякую за попередню реєстрацію! Надішлю вам деталі на пошту ближче до дати.</div>
+  </div>
+
+  <!-- FORM -->
+  <form id="regForm" novalidate>
+
+    <!-- CONTACT -->
+    <div class="form-card" id="formCard1">
+
+      <div class="field-group">
+        <label for="email">Email<span class="required-star">*</span></label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email"/>
+      </div>
+
+      <div class="field-divider"></div>
+
+      <div class="field-group">
+        <label for="name">Ваше імʼя<span class="required-star">*</span></label>
+        <input type="text" id="name" name="name" placeholder="Як вас звати?" required autocomplete="given-name"/>
+      </div>
+
+      <div class="field-divider"></div>
+
+      <div class="field-group">
+        <label for="invite_email">Ваша пошта для відправки запрошення<span class="required-star">*</span></label>
+        <input type="email" id="invite_email" name="invite_email" placeholder="your@email.com" autocomplete="email"/>
+      </div>
+
+      <div class="field-divider"></div>
+
+      <div class="field-group">
+        <label for="role">Ваша роль або сфера діяльності<span class="required-star">*</span> <span class="label-hint">(коротко, у вільній формі)</span></label>
+        <input type="text" id="role" name="role" placeholder="Наприклад: маркетолог, підприємець, дизайнер…"/>
+      </div>
+
+    </div>
+
+    <!-- QUESTIONS -->
+    <div class="form-card" id="formCard2">
+
+      <div class="field-group">
+        <label for="routine">Є задачі або процеси, які ви робите регулярно і які вам набридли? Що це?<span class="required-star">*</span></label>
+        <textarea id="routine" name="routine" placeholder="Наприклад: щодня вручну переношу дані в таблицю, пишу однотипні відповіді клієнтам…" rows="4"></textarea>
+      </div>
+
+      <div class="field-divider"></div>
+
+      <div class="field-group">
+        <label for="questions">Є питання про ШІ-інструменти чи автоматизацію, які вас давно цікавлять або бентежать?<span class="required-star">*</span> <span class="label-hint">(Врахую при підготовці до вебінару)</span></label>
+        <textarea id="questions" name="questions" placeholder="Будь-яке питання — навіть якщо здається «занадто базовим»…" rows="4"></textarea>
+      </div>
+
+    </div>
+
+    <!-- AI EXPERIENCE -->
+    <div class="form-card" id="formCard3">
+      <div class="field-group">
+        <label>Чи є досвід роботи із ШІ-інструментами?<span class="required-star">*</span></label>
+        <div class="radio-group" id="aiExpGroup">
+          <label class="radio-option">
+            <input type="radio" name="ai_exp" value="Ще не пробував(ла) нічого"/>
+            Ще не пробував(ла) нічого
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="ai_exp" value="Спробував(ла) кілька інструментів, але не розібрався(лась)"/>
+            Спробував(ла) кілька інструментів, але не розібрався(лась)
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="ai_exp" value="Використовую регулярно кілька інструментів"/>
+            Використовую регулярно кілька інструментів
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="ai_exp" value="Вже маю досвід і хочу дізнатись більше"/>
+            Вже маю досвід і хочу дізнатись більше
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIME PREFERENCE -->
+    <div class="form-card" id="formCard4">
+      <div class="field-group">
+        <label>Який зручний час для вебінару?<span class="required-star">*</span></label>
+        <div class="radio-group" id="timeGroup">
+          <label class="radio-option">
+            <input type="radio" name="time_pref" value="Будній день (18:00–21:00)"/>
+            📅 Будній день <span style="color:var(--muted);font-size:13px;">18:00–21:00</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="time_pref" value="Вихідний день (10:00–12:00)"/>
+            ☀️ Вихідний день <span style="color:var(--muted);font-size:13px;">10:00–12:00</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="time_pref" value="Вихідний день (14:00–17:00)"/>
+            🌤️ Вихідний день <span style="color:var(--muted);font-size:13px;">14:00–17:00</span>
+          </label>
+          <div class="radio-other-wrap">
+            <input type="radio" name="time_pref" value="other" id="timeOtherRadio"/>
+            <input type="text" class="radio-other-input" id="timeOtherInput" placeholder="Інший варіант…" onfocus="document.getElementById('timeOtherRadio').checked=true"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-wrap" id="submitWrap">
+      <button type="submit" class="submit-btn" id="submitBtn">
+        Надіслати реєстрацію →
+      </button>
+      <p class="submit-note">Після заповнення ми надішлемо деталі вебінару на вашу пошту 🧡</p>
+    </div>
+
+  </form>
+
+  <!-- SUCCESS -->
+  <div class="form-card success-screen" id="successScreen">
+    <span class="success-icon">🎉</span>
+    <h2 class="success-title">Дякую за реєстрацію!</h2>
+    <p class="success-text">Ми отримали вашу заявку. Надішлемо деталі вебінару на пошту ближче до дати. Не забудьте підписатись на Instagram, щоб нічого не пропустити 🧡</p>
+    <a href="https://www.instagram.com/darya_moreno/" target="_blank" class="back-btn">
+      @darya_moreno в Instagram
+    </a>
+  </div>
+
+</div>
+
+<script>
+  const form = document.getElementById('regForm');
+  const successScreen = document.getElementById('successScreen');
+
+  // Auto-copy email to invite_email field
+  const emailField = document.getElementById('email');
+  const inviteEmailField = document.getElementById('invite_email');
+  emailField.addEventListener('input', function() {
+    if (!inviteEmailField._manuallyEdited) {
+      inviteEmailField.value = emailField.value;
+    }
+  });
+  inviteEmailField.addEventListener('input', function() {
+    inviteEmailField._manuallyEdited = true;
+  });
+
+  function validateForm() {
+    const required = [
+      { el: document.getElementById('email'), name: 'Email' },
+      { el: document.getElementById('name'), name: 'Імʼя' },
+      { el: document.getElementById('invite_email'), name: 'Пошта для запрошення' },
+      { el: document.getElementById('role'), name: 'Роль або сфера' },
+      { el: document.getElementById('routine'), name: 'Задачі' },
+      { el: document.getElementById('questions'), name: 'Питання' },
+    ];
+
+    for (const item of required) {
+      if (!item.el.value.trim()) {
+        item.el.focus();
+        item.el.style.borderColor = '#E05A3A';
+        setTimeout(() => { item.el.style.borderColor = ''; }, 2000);
+        return false;
+      }
+    }
+
+    const aiExp = document.querySelector('input[name="ai_exp"]:checked');
+    if (!aiExp) {
+      document.getElementById('formCard3').scrollIntoView({ block: 'center' });
+      return false;
+    }
+
+    const timePref = document.querySelector('input[name="time_pref"]:checked');
+    if (!timePref) {
+      document.getElementById('formCard4').scrollIntoView({ block: 'center' });
+      return false;
+    }
+
+    return true;
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Надсилаємо…';
+    btn.disabled = true;
+
+    // Collect data and submit to Google Forms
+    const aiExpVal = document.querySelector('input[name="ai_exp"]:checked').value;
+    let timePrefVal = document.querySelector('input[name="time_pref"]:checked').value;
+    if (timePrefVal === 'other') {
+      timePrefVal = document.getElementById('timeOtherInput').value || 'Інший';
+    }
+
+    // Google Form entry IDs (from the form URL structure)
+    const formData = new FormData();
+    formData.append('entry.2005620554', document.getElementById('email').value);
+    formData.append('entry.1045781291', document.getElementById('name').value);
+    formData.append('entry.1065046570', document.getElementById('invite_email').value);
+    formData.append('entry.1166974658', document.getElementById('role').value);
+    formData.append('entry.839337160', document.getElementById('routine').value);
+    formData.append('entry.1852049966', document.getElementById('questions').value);
+    formData.append('entry.2122246001', aiExpVal);
+    formData.append('entry.1733279408', timePrefVal);
+
+    // Submit via no-cors fetch (Google Forms doesn't allow CORS but accepts the data)
+    fetch('https://docs.google.com/forms/d/e/1FAIpQLSdEzPIKaEFSzI1XcfnciomzxKBhKPYcZLAUW0J40IVAF3fRTg/formResponse', {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData
+    }).then(() => {
+      showSuccess();
+    }).catch(() => {
+      showSuccess(); // show success regardless (no-cors always throws)
+    });
+  });
+
+  function showSuccess() {
+    document.getElementById('formHeader').classList.add('hidden');
+    document.querySelectorAll('.form-card').forEach(el => el.classList.add('hidden'));
+    document.getElementById('submitWrap').classList.add('hidden');
+    successScreen.classList.add('visible');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
