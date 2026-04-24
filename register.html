@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Реєстрація на вебінар — ШІ для роботи</title>
+<title>Автоматизуйте рутину за допомогою ШІ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet"/>
@@ -409,17 +409,16 @@
 
   <!-- HEADER -->
   <div class="form-header" id="formHeader">
-    <div class="form-badge">
-      <span class="nav-dot"></span>
-      Безкоштовний вебінар
-    </div>
-    <h1 class="form-title">Як не загубитись в світі ШІ та як використовувати його для економії часу</h1>
-    <p class="form-desc">Заповніть будь ласка форму для <b>попередньої реєстрації</b>. Якщо ви починаєте понеділок з відчуттям, що знову весь тиждень піде на задачі, які нікуди не рухають вас вперед — цей вебінар про це.</p>
-    <div class="form-note">🧡 Дякую за попередню реєстрацію! Надішлю вам деталі на пошту ближче до дати.</div>
+    <h1 class="form-title">Автоматизуйте рутину за допомогою ШІ</h1>
+    <p class="form-desc"><strong>Чому ми постійно зайняті, але не встигаємо зробити важливе?</strong></p>
+    <p class="form-desc">Ми працюємо весь день, закриваємо купу задач, відповідаємо на повідомлення, заповнюємо таблиці, щось шукаємо, щось пишемо. Ввечері відчуття, ніби весь день пройшов у русі, але щось важливе так і не зрушило з місця.</p>
+    <p class="form-desc">Проблема в тому, що більшість нашого часу йде на обслуговування процесів, а не на самі процеси.</p>
+    <p class="form-desc" style="margin-top: 20px;"><strong>За тиждень на автоматизовані задачі можна повернути ~14 годин часу.</strong></p>
+    <div class="form-note">🧡 Попередній запис на безкоштовний вебінар про те, як використовувати ШІ для економії часу</div>
   </div>
 
   <!-- FORM -->
-  <form id="regForm" novalidate>
+  <form id="regForm" action="https://formsubmit.co/shevchukbodya@gmail.com" method="POST" novalidate>
 
     <!-- CONTACT -->
     <div class="form-card" id="formCard1">
@@ -563,7 +562,7 @@
       { el: document.getElementById('name'), name: 'Імʼя' },
       { el: document.getElementById('invite_email'), name: 'Пошта для запрошення' },
       { el: document.getElementById('role'), name: 'Роль або сфера' },
-      { el: document.getElementById('routine'), name: 'Задачі' },
+      { el: document.getElementById('routine'), name: 'Задачи' },
       { el: document.getElementById('questions'), name: 'Питання' },
     ];
 
@@ -592,42 +591,18 @@
   }
 
   form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    if (!validateForm()) return;
+    if (!validateForm()) {
+      e.preventDefault();
+      return;
+    }
 
     const btn = document.getElementById('submitBtn');
     btn.textContent = 'Надсилаємо…';
     btn.disabled = true;
 
-    // Collect data and submit to Google Forms
-    const aiExpVal = document.querySelector('input[name="ai_exp"]:checked').value;
-    let timePrefVal = document.querySelector('input[name="time_pref"]:checked').value;
-    if (timePrefVal === 'other') {
-      timePrefVal = document.getElementById('timeOtherInput').value || 'Інший';
-    }
-
-    // Google Form entry IDs (from the form URL structure)
-    const formData = new FormData();
-    formData.append('entry.2005620554', document.getElementById('email').value);
-    formData.append('entry.1045781291', document.getElementById('name').value);
-    formData.append('entry.1065046570', document.getElementById('invite_email').value);
-    formData.append('entry.1166974658', document.getElementById('role').value);
-    formData.append('entry.839337160', document.getElementById('routine').value);
-    formData.append('entry.1852049966', document.getElementById('questions').value);
-    formData.append('entry.2122246001', aiExpVal);
-    formData.append('entry.1733279408', timePrefVal);
-
-    // Submit via no-cors fetch (Google Forms doesn't allow CORS but accepts the data)
-    fetch('https://docs.google.com/forms/d/e/1FAIpQLSdEzPIKaEFSzI1XcfnciomzxKBhKPYcZLAUW0J40IVAF3fRTg/formResponse', {
-      method: 'POST',
-      mode: 'no-cors',
-      body: formData
-    }).then(() => {
+    setTimeout(() => {
       showSuccess();
-    }).catch(() => {
-      showSuccess(); // show success regardless (no-cors always throws)
-    });
+    }, 1000);
   });
 
   function showSuccess() {
