@@ -15,10 +15,9 @@
     --card: #FFFFFF;
     --text: #1C1A17;
     --muted: #6B6760;
-    --accent: oklch(0.68 0.13 52);
-    --accent-bg: oklch(0.96 0.03 52);
+    --accent: #D27A2D;
+    --accent-bg: #FBF0E4;
     --btn-dark: #1C1A17;
-    --btn-dark-text: #FFFFFF;
     --radius: 18px;
     --radius-sm: 12px;
   }
@@ -38,7 +37,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(240, 237, 230, 0.9);
+    background: rgba(240, 237, 230, 0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 14px 20px;
@@ -62,11 +61,12 @@
     background: #3DB87A;
     border-radius: 50%;
     display: inline-block;
+    flex-shrink: 0;
   }
 
   .nav-cta {
     background: var(--btn-dark);
-    color: var(--btn-dark-text);
+    color: white;
     border: none;
     border-radius: 50px;
     padding: 9px 20px;
@@ -78,117 +78,6 @@
     transition: opacity 0.2s;
   }
   .nav-cta:hover { opacity: 0.8; }
-
-  /* LAYOUT */
-  .container {
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 0 16px;
-  }
-
-  section { margin-bottom: 12px; }
-
-  /* HERO CARD */
-  .hero-card {
-    background: var(--card);
-    border-radius: var(--radius);
-    overflow: hidden;
-    margin: 16px 16px 0;
-  }
-
-  .hero-cover {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
-    background: linear-gradient(135deg, #e8e0d4, #c9bfb0);
-  }
-
-  .hero-cover-placeholder {
-    width: 100%;
-    height: 180px;
-    background: linear-gradient(135deg, #DDD8CF 0%, #C5BDB2 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-  }
-
-  .hero-body {
-    padding: 24px 22px 28px;
-  }
-
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--muted);
-    background: var(--bg);
-    border-radius: 50px;
-    padding: 5px 12px;
-    margin-bottom: 18px;
-  }
-
-  .hero-title {
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.5px;
-    margin-bottom: 14px;
-    text-wrap: pretty;
-  }
-
-  .hero-sub {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.6;
-    margin-bottom: 24px;
-    text-wrap: pretty;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--btn-dark);
-    color: var(--btn-dark-text);
-    border: none;
-    border-radius: 50px;
-    padding: 14px 24px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform 0.15s, opacity 0.15s;
-  }
-  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
-  .btn-primary:active { transform: translateY(0); }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--text);
-    border: 1.5px solid rgba(0,0,0,0.15);
-    border-radius: 50px;
-    padding: 14px 24px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    transition: background 0.15s;
-  }
-  .btn-ghost:hover { background: rgba(0,0,0,0.04); }
 
   /* CARDS */
   .card {
@@ -207,6 +96,87 @@
     margin-bottom: 14px;
   }
 
+  /* HERO */
+  .hero-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 16px 16px 12px;
+  }
+
+  .hero-cover {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-body {
+    padding: 24px 22px 28px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    background: var(--bg);
+    border-radius: 50px;
+    padding: 5px 12px;
+    margin-bottom: 16px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+    text-wrap: pretty;
+  }
+
+  .info-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+
+  .info-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg);
+    border-radius: 50px;
+    padding: 7px 13px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .btn-primary {
+    background: var(--btn-dark);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s, opacity 0.15s;
+    width: 100%;
+    justify-content: center;
+  }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* TEXT */
   .card-title {
     font-size: 20px;
     font-weight: 700;
@@ -226,36 +196,34 @@
     text-wrap: pretty;
   }
 
-  /* PROBLEMS */
+  .card-text.dark { color: var(--text); }
+
+  /* PROBLEM LIST */
   .problem-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 14px;
+    gap: 8px;
+    margin: 12px 0;
   }
 
   .problem-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 14px;
-    color: var(--muted);
+    font-size: 15px;
+    color: var(--text);
     line-height: 1.5;
+    text-wrap: pretty;
   }
 
-  .problem-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-
+  /* QUOTE */
   .quote-block {
     border-left: 3px solid var(--accent);
     padding: 12px 16px;
     background: var(--accent-bg);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     font-size: 15px;
-    font-style: italic;
     color: var(--text);
-    margin-top: 16px;
-    line-height: 1.6;
+    margin-top: 14px;
+    line-height: 1.65;
     text-wrap: pretty;
   }
 
@@ -278,11 +246,12 @@
   }
 
   .time-table td {
-    font-size: 13.5px;
+    font-size: 14px;
     padding: 11px 0;
     border-bottom: 1px solid rgba(0,0,0,0.05);
     vertical-align: top;
     line-height: 1.4;
+    color: var(--text);
   }
 
   .time-table td:last-child {
@@ -291,7 +260,7 @@
     font-weight: 600;
     color: var(--accent);
     padding-left: 12px;
-    min-width: 80px;
+    min-width: 90px;
   }
 
   .time-total {
@@ -299,7 +268,7 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 14px;
-    padding: 12px 14px;
+    padding: 12px 16px;
     background: var(--btn-dark);
     border-radius: var(--radius-sm);
     color: white;
@@ -308,26 +277,84 @@
   .time-total-label { font-size: 13px; font-weight: 500; }
   .time-total-value { font-size: 20px; font-weight: 700; }
 
-  /* AUTOMATION CARDS */
+  /* CTA CARD */
+  .cta-card {
+    background: var(--btn-dark);
+    border-radius: var(--radius);
+    padding: 24px 22px;
+    margin: 0 16px 12px;
+  }
+
+  .cta-badge {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 12px;
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  .cta-badge strong { color: white; font-weight: 600; }
+
+  .btn-light {
+    background: white;
+    color: var(--btn-dark);
+    border: none;
+    border-radius: 50px;
+    padding: 14px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    transition: transform 0.15s, box-shadow 0.15s;
+    margin-top: 16px;
+  }
+  .btn-light:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+  /* ACCORDION */
   .auto-card {
     background: var(--card);
     border-radius: var(--radius);
-    padding: 20px 22px;
+    padding: 18px 22px;
     margin: 0 16px 10px;
   }
+
+  details.auto-detail summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  details.auto-detail summary::-webkit-details-marker { display: none; }
+  details.auto-detail summary::after {
+    content: "+";
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--muted);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+  details.auto-detail[open] summary::after { transform: rotate(45deg); }
 
   .auto-header {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 12px;
   }
 
   .auto-icon {
-    font-size: 22px;
-    width: 44px; height: 44px;
+    font-size: 20px;
+    width: 40px; height: 40px;
     background: var(--bg);
-    border-radius: 12px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -337,14 +364,28 @@
   .auto-title {
     font-size: 16px;
     font-weight: 700;
+    color: var(--text);
+  }
+
+  .auto-detail-body {
+    padding-top: 16px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    margin-top: 16px;
   }
 
   .auto-desc {
-    font-size: 13.5px;
+    font-size: 14px;
     color: var(--muted);
-    line-height: 1.55;
+    line-height: 1.6;
     margin-bottom: 12px;
     text-wrap: pretty;
+  }
+
+  .delegate-label {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
   }
 
   .delegate-list {
@@ -352,7 +393,7 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
 
   .delegate-item {
@@ -365,31 +406,39 @@
   }
 
   .delegate-item::before {
-    content: "—";
+    content: "□";
     color: var(--muted);
     flex-shrink: 0;
+    font-size: 12px;
+    margin-top: 2px;
   }
 
   .result-tag {
-    display: inline-flex;
-    align-items: center;
+    display: flex;
+    align-items: flex-start;
     gap: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    color: #2A7A52;
-    background: rgba(42, 122, 82, 0.08);
-    border-radius: 8px;
-    padding: 6px 10px;
-    line-height: 1.4;
+    font-size: 13.5px;
+    color: var(--text);
+    background: var(--accent-bg);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    line-height: 1.5;
     text-wrap: pretty;
   }
 
   /* STEPS */
+  .steps-intro {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 18px;
+    text-wrap: pretty;
+  }
+
   .steps-list {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    margin-top: 6px;
+    gap: 16px;
   }
 
   .step-item {
@@ -400,7 +449,7 @@
 
   .step-num {
     width: 32px; height: 32px;
-    background: var(--btn-dark);
+    background: var(--accent);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -411,108 +460,91 @@
     flex-shrink: 0;
   }
 
-  .step-content {}
-  .step-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .step-title { font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
   .step-text { font-size: 14px; color: var(--muted); line-height: 1.55; text-wrap: pretty; }
 
-  /* CTA CARD */
-  .cta-card {
-    background: var(--btn-dark);
-    border-radius: var(--radius);
-    padding: 26px 22px;
-    margin: 0 16px 12px;
+  /* SECTION LABEL */
+  .section-label {
     text-align: center;
-  }
-
-  .cta-badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.15);
-    color: rgba(255,255,255,0.8);
-    border-radius: 50px;
-    padding: 5px 14px;
-    font-size: 12px;
-    font-weight: 500;
-    margin-bottom: 16px;
-  }
-
-  .cta-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: white;
-    line-height: 1.25;
-    margin-bottom: 10px;
-    text-wrap: pretty;
-  }
-
-  .cta-sub {
-    font-size: 14px;
-    color: rgba(255,255,255,0.65);
-    margin-bottom: 22px;
-    line-height: 1.55;
-    text-wrap: pretty;
-  }
-
-  .btn-light {
-    background: white;
-    color: var(--btn-dark);
-    border: none;
-    border-radius: 50px;
-    padding: 15px 28px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
+    font-size: 11px;
     font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform 0.15s, box-shadow 0.15s;
-    width: 100%;
-    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    padding: 20px 16px 8px;
   }
-  .btn-light:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
 
-  /* AUTHOR */
-  .author-card {
+  /* INSTAGRAM */
+  .ig-card {
     background: var(--card);
     border-radius: var(--radius);
     padding: 22px;
     margin: 0 16px 12px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
   }
 
-  .author-avatar {
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #D4C4B0, #BEB0A0);
+  .ig-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .ig-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 18px;
+    text-wrap: pretty;
+  }
+
+  .ig-posts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .ig-post-embed {
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: var(--bg);
+    min-height: 200px;
+  }
+
+  .ig-post-embed iframe,
+  .ig-post-embed blockquote {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .ig-follow-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
-    flex-shrink: 0;
-  }
-
-  .author-name { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
-  .author-role { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
-
-  .author-ig {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    text-decoration: none;
-    background: var(--bg);
+    gap: 10px;
+    background: var(--btn-dark);
+    color: white;
     border-radius: 50px;
-    padding: 5px 12px;
-    transition: background 0.15s;
+    padding: 13px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.15s;
   }
-  .author-ig:hover { background: rgba(0,0,0,0.08); }
+  .ig-follow-btn:hover { opacity: 0.8; }
 
-  /* STICKY BUTTON */
+  .ig-follow-callout {
+    background: var(--accent-bg);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
+  /* STICKY */
   .sticky-bar {
     position: fixed;
     bottom: 0;
@@ -546,77 +578,10 @@
     transition: transform 0.15s, box-shadow 0.15s;
   }
   .sticky-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(0,0,0,0.25); }
-  .sticky-btn:active { transform: translateY(0); }
-
-  /* SECTION DIVIDER LABEL */
-  .section-label {
-    text-align: center;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    padding: 20px 16px 8px;
-  }
-
-  /* HIGHLIGHT */
-  .highlight-orange { color: var(--accent); }
-
-  /* SMALL INFO ROW */
-  .info-row {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-top: 14px;
-  }
-
-  .info-chip {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--bg);
-    border-radius: 50px;
-    padding: 7px 13px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-  }
-
-  /* ACCORDION for auto sections */
-  details.auto-detail { }
-  details.auto-detail summary {
-    list-style: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  details.auto-detail summary::-webkit-details-marker { display: none; }
-  details.auto-detail summary::after {
-    content: "+";
-    font-size: 18px;
-    font-weight: 300;
-    color: var(--muted);
-    flex-shrink: 0;
-    transition: transform 0.2s;
-  }
-  details.auto-detail[open] summary::after {
-    transform: rotate(45deg);
-  }
-  .auto-detail-body {
-    padding-top: 14px;
-    border-top: 1px solid rgba(0,0,0,0.06);
-    margin-top: 14px;
-  }
 
   @media (min-width: 520px) {
-    nav, .container, .hero-card, .card, .auto-card, .cta-card, .author-card {
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero-card { margin-left: auto; margin-right: auto; }
-    body { padding-top: 0; }
+    nav { max-width: 480px; margin: 0 auto; border-radius: 0 0 var(--radius-sm) var(--radius-sm); }
+    .hero-card, .card, .auto-card, .cta-card, .ig-card { max-width: 480px; margin-left: auto; margin-right: auto; }
   }
 </style>
 </head>
@@ -628,24 +593,19 @@
     <span class="nav-dot"></span>
     ШІ для роботи
   </div>
-  <a href="register.html" target="_blank" class="nav-cta">Реєстрація</a>
+  <a href="register.html" class="nav-cta">Реєстрація</a>
 </nav>
 
 <!-- HERO -->
 <div class="hero-card">
-  <div class="hero-cover-placeholder">⌛</div>
+  <img class="hero-cover" src="notion.jpg" alt="Автоматизуйте рутину за допомогою ШІ"/>
   <div class="hero-body">
     <div class="hero-tag">
       <span class="nav-dot"></span>
       Безкоштовний вебінар
     </div>
     <h1 class="hero-title">Автоматизуйте рутину за допомогою ШІ</h1>
-    <p class="hero-sub">Дізнайтесь, де саме ви втрачаєте 14 годин на тиждень — і як повернути їх без технічного досвіду.</p>
-    <div class="hero-actions">
-      <a href="register.html" target="_blank" class="btn-primary">
-        Записатись безкоштовно →
-      </a>
-    </div>
+    <a href="register.html" class="btn-primary">Записатись безкоштовно →</a>
     <div class="info-row">
       <span class="info-chip">🆓 Безкоштовно</span>
       <span class="info-chip">⏱️ Без технічного досвіду</span>
@@ -653,209 +613,213 @@
   </div>
 </div>
 
-<!-- PROBLEM SECTION -->
-<div style="height:12px;"></div>
+<!-- PROBLEM -->
 <div class="card">
-  <div class="card-label">Проблема</div>
-  <h2 class="card-title orange">Чому ми постійно зайняті, але не встигаємо зробити важливе?</h2>
-  <p class="card-text">Ми працюємо весь день, закриваємо купу задач, відповідаємо на повідомлення, заповнюємо таблиці. Ввечері відчуття, ніби весь день пройшов у русі, але щось важливе так і не зрушило з місця.</p>
-  <p class="card-text">Проблема в тому, що більшість часу йде на обслуговування процесів, а не на самі процеси.</p>
+  <h2 class="card-title orange">Чому ми постійно зайняті,<br/>але не встигаємо зробити важливе?</h2>
+  <p class="card-text dark">Ми працюємо весь день, закриваємо купу задач, відповідаємо на повідомлення, заповнюємо таблиці, щось шукаємо, щось пишемо. Ввечері відчуття, ніби весь день пройшов у русі, але щось важливе так і не зрушило з місця.</p>
+  <p class="card-text dark">Проблема в тому, що більшість нашого часу йде на обслуговування процесів, а не на самі процеси.</p>
   <ul class="problem-list">
-    <li class="problem-item">
-      <span class="problem-icon">❌</span>
-      <span>Замість того щоб будувати стратегію — переносимо дані з одного місця в інше.</span>
-    </li>
-    <li class="problem-item">
-      <span class="problem-icon">❌</span>
-      <span>Замість створення контенту — годину підбираємо формулювання для одного повідомлення.</span>
-    </li>
-    <li class="problem-item">
-      <span class="problem-icon">❌</span>
-      <span>Замість навчання — сортуємо нотатки після уроку.</span>
-    </li>
+    <li class="problem-item">❌ Замість того щоб будувати стратегію, ми переносимо дані з одного місця в інше.</li>
+    <li class="problem-item">❌ Замість створення контенту, годину підбираємо формулювання для одного повідомлення.</li>
+    <li class="problem-item">❌ Замість навчання, сортуємо нотатки після уроку.</li>
   </ul>
-  <div class="quote-block">Ці задачі потрібні, але вони не потребують саме вас. Вони потребують вашого часу — і забирають його у того, що дійсно потребує вашої голови.</div>
+  <div class="quote-block">Ці задачі потрібні, без них нічого не працює. Але вони не потребують саме вас. Вони потребують вашого часу і забирають його у того, що дійсно потребує вашої голови.</div>
 </div>
 
 <!-- TIME TABLE -->
 <div class="card">
-  <div class="card-label">⏱️ Скільки часу ви насправді витрачаєте?</div>
+  <h2 class="card-title" style="margin-bottom:16px;">⏱️ Скільки часу ви насправді витрачаєте?</h2>
   <table class="time-table">
     <thead>
       <tr>
         <th>Задача</th>
-        <th style="text-align:right;">На тиждень</th>
+        <th style="text-align:right;">Час</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Переписуєте задачі з голови в нотатки</td>
+        <td>Переписуєте задачі з голови в нотатки або планер</td>
         <td>~30 хв</td>
       </tr>
       <tr>
-        <td>Заповнюєте таблицю або звіт вручну</td>
-        <td>~2–3 год</td>
+        <td>Заповнюєте таблицю чи звіт вручну, переносячи дані з одного місця в інше</td>
+        <td>~2–3 години</td>
       </tr>
       <tr>
-        <td>Пишете однотипні повідомлення клієнтам</td>
-        <td>~4 год</td>
+        <td>Пишете однотипні повідомлення клієнтам, колегам або підрядникам</td>
+        <td>~4 години</td>
       </tr>
       <tr>
-        <td>Збираєте інформацію для порівняння</td>
-        <td>~1.5 год</td>
+        <td>Збираєте інформацію для порівняння — ціни, характеристики, умови</td>
+        <td>~1,5 години</td>
       </tr>
       <tr>
-        <td>Резюмуєте зустрічі та дзвінки</td>
-        <td>~1.5 год</td>
+        <td>Резюмуєте зустріч або дзвінок і розписуєте хто що має зробити далі</td>
+        <td>~1,5 години</td>
       </tr>
       <tr>
-        <td>Пишете пости або розсилки</td>
-        <td>~3 год</td>
+        <td>Сидите над текстом для поста чи розсилки</td>
+        <td>~3 години</td>
       </tr>
       <tr>
-        <td>Конспектуєте уроки іноземної мови</td>
-        <td>~1.5 год</td>
+        <td>Виписуєте слова з уроку іноземної мови і шукаєте приклади</td>
+        <td>~1,5 години</td>
       </tr>
     </tbody>
   </table>
   <div class="time-total">
-    <span class="time-total-label">Разом на тиждень</span>
+    <span class="time-total-label">Набігає на тиждень</span>
     <span class="time-total-value">~14 годин</span>
   </div>
-  <p class="card-text" style="margin-top:14px;">І це час, який ви можете присвятити стратегічним задачам — де дійсно потрібне ваше мислення.</p>
+  <div class="quote-block" style="margin-top:14px;">
+    Звичайно, не все це трапляється в один день. Але протягом тижня набігає <strong>~14 годин</strong> на задачі, які можна делегувати ШІ-асистенту.
+    <br/><br/>І все це час, який ви можете присвятити стратегічним і креативним задачам — тим, де дійсно потрібне ваше мислення, ваш досвід і ваше включення.
+  </div>
 </div>
 
-<!-- FIRST CTA -->
+<!-- MID CTA -->
 <div class="cta-card">
-  <div class="cta-badge">📌 Попередній запис</div>
-  <h2 class="cta-title">Як не загубитись в світі ШІ та використовувати його для економії часу</h2>
-  <p class="cta-sub">Не про те, як стати розробником. А про те, щоб зрозуміти де саме ви втрачаєте час — і чи є спосіб змінити це без технічного досвіду.</p>
-  <a href="register.html" target="_blank" class="btn-light">
-    Записатись безкоштовно →
-  </a>
+  <p class="cta-badge">📌 Попередній запис на <strong>безкоштовний вебінар</strong> про те, як не загубитись в світі AI і як використовувати його для економії часу 👇🏻</p>
+  <div style="background:rgba(255,255,255,0.08);border-radius:var(--radius-sm);padding:14px 16px;">
+    <p style="font-size:15px;font-weight:700;color:white;margin-bottom:6px;">Як не загубитись в світі ШІ та як використовувати його для економії часу</p>
+    <p style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;text-wrap:pretty;">Заповніть будь ласка форму для попередньої реєстрації на безкоштовний вебінар. Якщо ви починаєте понеділок з відчуттям, що знову весь тиждень піде на задачі, які нікуди не рухають вас вперед — цей вебінар про це.</p>
+  </div>
+  <a href="register.html" class="btn-light">Записатись безкоштовно →</a>
 </div>
 
-<!-- IDEAS SECTION -->
+<!-- IDEAS LABEL -->
 <div class="section-label">💡 Ідеї для автоматизації</div>
 
+<!-- EMAIL -->
 <div class="auto-card">
   <details class="auto-detail">
     <summary>
-      <div class="auto-header" style="margin-bottom:0;">
+      <div class="auto-header">
         <div class="auto-icon">✉️</div>
         <div class="auto-title">Пошта і повідомлення</div>
       </div>
     </summary>
     <div class="auto-detail-body">
-      <p class="auto-desc">Щодня ми перечитуємо купу листів, розбираємо що важливо, пишемо відповіді. І так по колу кожен день.</p>
+      <p class="auto-desc">Щодня ми витрачаємо час на те, щоб перечитати купу листів, зрозуміти що важливо, написати відповіді. І так по колу кожен день.</p>
+      <p class="delegate-label">Що можна делегувати:</p>
       <ul class="delegate-list">
-        <li class="delegate-item">Перевірка інбоксу і сортування за пріоритетом</li>
-        <li class="delegate-item">Чернетки відповідей у вашому тоні</li>
-        <li class="delegate-item">Нагадування про листи, на які ви забули відповісти</li>
+        <li class="delegate-item">Перевірка інбоксу і сортування за пріоритетом;</li>
+        <li class="delegate-item">Чернетки відповідей у вашому тоні;</li>
+        <li class="delegate-item">Нагадування про листи, на які ви забули відповісти.</li>
       </ul>
-      <div class="result-tag">✅ Відкриваєте пошту — листи вже розсортовані з готовими відповідями</div>
+      <div class="result-tag">✅ <span><strong>Результат:</strong> ви відкриваєте пошту і бачите вже розсортовані листи з готовими відповідями, залишається тільки переглянути і надіслати.</span></div>
     </div>
   </details>
 </div>
 
+<!-- FINANCE -->
 <div class="auto-card">
   <details class="auto-detail">
     <summary>
-      <div class="auto-header" style="margin-bottom:0;">
+      <div class="auto-header">
         <div class="auto-icon">💰</div>
         <div class="auto-title">Фінанси</div>
       </div>
     </summary>
     <div class="auto-detail-body">
-      <p class="auto-desc">Більшість з нас приблизно розуміє куди йдуть гроші, але точну картину не має ніхто — вести облік вручну довго і нудно.</p>
+      <p class="auto-desc">Більшість з нас приблизно розуміє куди йдуть гроші, але точну картину не має ніхто, бо вести облік вручну довго і нудно.</p>
+      <p class="delegate-label">Що можна делегувати:</p>
       <ul class="delegate-list">
-        <li class="delegate-item">Категоризація витрат за місяць</li>
-        <li class="delegate-item">Відстеження підписок і сервісів</li>
-        <li class="delegate-item">Простий звіт: куди пішли гроші і що змінилось</li>
-        <li class="delegate-item">План для заощаджень</li>
+        <li class="delegate-item">Категоризація витрат за місяць;</li>
+        <li class="delegate-item">Відстеження підписок і сервісів, за які ви платите;</li>
+        <li class="delegate-item">Простий звіт: куди пішли гроші і що змінилось;</li>
+        <li class="delegate-item">План для заощаджень.</li>
       </ul>
-      <div class="result-tag">✅ Зрозуміла картина за пару хвилин замість «куди витратились гроші»</div>
+      <div class="result-tag">✅ <span><strong>Результат:</strong> замість відчуття [куди витратились гроші] — зрозуміла картина за пару хв.</span></div>
     </div>
   </details>
 </div>
 
+<!-- EDUCATION -->
 <div class="auto-card">
   <details class="auto-detail">
     <summary>
-      <div class="auto-header" style="margin-bottom:0;">
+      <div class="auto-header">
         <div class="auto-icon">📚</div>
         <div class="auto-title">Навчання</div>
       </div>
     </summary>
     <div class="auto-detail-body">
-      <p class="auto-desc">Ви вчите мову, проходите курс, читаєте книги — але конспектувати і систематизувати це окрема робота.</p>
+      <p class="auto-desc">Ви вчите мову, проходите курс, читаєте книги — але конспектувати, повторювати і систематизувати це окрема робота, на яку теж потрібен час і сили.</p>
+      <p class="delegate-label">Що можна делегувати:</p>
       <ul class="delegate-list">
-        <li class="delegate-item">Виписування нових слів з уроку + приклади вживання</li>
-        <li class="delegate-item">Створення карток для повторення</li>
-        <li class="delegate-item">Конспект лекції чи відео</li>
-        <li class="delegate-item">План навчання на тиждень</li>
+        <li class="delegate-item">Виписування нових слів з уроку + приклади вживання;</li>
+        <li class="delegate-item">Створення карток для повторення;</li>
+        <li class="delegate-item">Конспект лекції чи відео;</li>
+        <li class="delegate-item">План навчання на тиждень з урахуванням вашого темпу.</li>
       </ul>
-      <div class="result-tag">✅ Витрачаєте час на навчання, а підготовка вже зроблена</div>
+      <div class="result-tag">✅ <span><strong>Результат:</strong> ви витрачаєте час на саме навчання, а підготовка до нього вже зроблена.</span></div>
     </div>
   </details>
 </div>
 
+<!-- CONTENT -->
 <div class="auto-card">
   <details class="auto-detail">
     <summary>
-      <div class="auto-header" style="margin-bottom:0;">
+      <div class="auto-header">
         <div class="auto-icon">📱</div>
         <div class="auto-title">Контент і соцмережі</div>
       </div>
     </summary>
     <div class="auto-detail-body">
-      <p class="auto-desc">Якщо ви ведете блог, ви знаєте скільки часу займає все навколо самого контенту — ідеї, тексти, підписи, аналітика.</p>
+      <p class="auto-desc">Якщо ви ведете блог чи сторінку, ви знаєте скільки часу займає все навколо самого контенту — ідеї, тексти, підписи, аналітика.</p>
+      <p class="delegate-label">Що можна делегувати:</p>
       <ul class="delegate-list">
-        <li class="delegate-item">Ідеї для постів на тиждень</li>
-        <li class="delegate-item">Чернетки текстів і підписів</li>
-        <li class="delegate-item">Аналітика: що зайшло, що ні, і чому</li>
+        <li class="delegate-item">Ідеї для постів на тиждень;</li>
+        <li class="delegate-item">Чернетки текстів і підписів;</li>
+        <li class="delegate-item">Аналітика: що зайшло, що ні, і чому.</li>
       </ul>
-      <div class="result-tag">✅ Займаєтесь творчою частиною, рутинна — вже готова</div>
+      <div class="result-tag">✅ <span><strong>Результат:</strong> ви займаєтесь творчою частиною, а рутинна робота навколо неї вже готова.</span></div>
     </div>
   </details>
 </div>
 
+<!-- PLANNING -->
 <div class="auto-card">
   <details class="auto-detail">
     <summary>
-      <div class="auto-header" style="margin-bottom:0;">
+      <div class="auto-header">
         <div class="auto-icon">🗓️</div>
         <div class="auto-title">Планування дня</div>
       </div>
     </summary>
     <div class="auto-detail-body">
-      <p class="auto-desc">Ми тримаємо в голові десятки задач і дедлайнів. Навіть коли нічого не робиш — просто пам'ятати все це вже виснажує.</p>
+      <p class="auto-desc">Ми тримаємо в голові десятки задач, зустрічей і дедлайнів. Навіть коли нічого не робиш — просто пам'ятати все це вже виснажує.</p>
+      <p class="delegate-label">Що можна делегувати:</p>
       <ul class="delegate-list">
-        <li class="delegate-item">План задач на день або тиждень</li>
-        <li class="delegate-item">Підготовка до зустрічей: хто ця людина, про що говорити</li>
-        <li class="delegate-item">Ввечері коротке підведення: що зроблено, що перенести</li>
+        <li class="delegate-item">План задач на день або тиждень;</li>
+        <li class="delegate-item">Підготовка до зустрічей: хто ця людина, про що говорити;</li>
+        <li class="delegate-item">Ввечері коротке підведення: що зроблено, що перенести на завтра.</li>
       </ul>
-      <div class="result-tag">✅ Голова вільна від «не забути» — все записано і впорядковано</div>
+      <div class="result-tag">✅ <span><strong>Результат:</strong> голова вільна від постійного [не забути], бо все вже записано і впорядковано.</span></div>
     </div>
   </details>
 </div>
 
+<!-- TRAVEL -->
 <div class="auto-card">
   <details class="auto-detail">
     <summary>
-      <div class="auto-header" style="margin-bottom:0;">
+      <div class="auto-header">
         <div class="auto-icon">✈️</div>
         <div class="auto-title">Подорожі</div>
       </div>
     </summary>
     <div class="auto-detail-body">
-      <p class="auto-desc">Планування поїздки іноді забирає більше енергії ніж сама поїздка — порівняння цін, готелі, маршрути.</p>
+      <p class="auto-desc">Планування поїздки іноді забирає більше енергії ніж сама поїздка — порівняння цін, пошук готелів, маршрути, ресторани.</p>
+      <p class="delegate-label">Що можна делегувати:</p>
       <ul class="delegate-list">
-        <li class="delegate-item">Підбір рейсів і готелів під бюджет</li>
-        <li class="delegate-item">Маршрут по днях з локаціями</li>
-        <li class="delegate-item">Умови в'їзду і особливості транспорту</li>
+        <li class="delegate-item">Підбір рейсів і готелів під бюджет;</li>
+        <li class="delegate-item">Маршрут по дням з локаціями;</li>
+        <li class="delegate-item">Умови в'їзду і особливості міського транспорту.</li>
       </ul>
-      <div class="result-tag">✅ Готовий план поїздки замість двадцяти відкритих вкладок</div>
+      <div class="result-tag">✅ <span><strong>Результат:</strong> ви отримуєте готовий план поїздки, а не двадцять відкритих вкладок в браузері.</span></div>
     </div>
   </details>
 </div>
@@ -864,26 +828,27 @@
 <div class="section-label">🚀 З чого почати?</div>
 
 <div class="card">
+  <p class="steps-intro">Візьміть один свій звичайний день і пройдіться по ньому від ранку до вечора. Зверніть увагу на моменти, де ви робите щось на автопілоті — перевіряєте пошту, переписуєте задачі з голови в нотатки, шукаєте інформацію, яку потім нікуди не зберігаєте.</p>
   <div class="steps-list">
     <div class="step-item">
       <div class="step-num">1</div>
-      <div class="step-content">
-        <div class="step-title">Випишіть 3–5 задач-поглиначів</div>
-        <p class="step-text">Не обирайте найскладніше — почніть з того, що дратує найбільше або забирає час щодня.</p>
+      <div>
+        <div class="step-title">Крок 1</div>
+        <p class="step-text">Випишіть 3–5 таких задач. Не обирайте найскладніше — почніть з того, що дратує найбільше або забирає час щодня.</p>
       </div>
     </div>
     <div class="step-item">
       <div class="step-num">2</div>
-      <div class="step-content">
-        <div class="step-title">Делегуйте одну задачу ШІ</div>
-        <p class="step-text">Опишіть задачу простими словами: «переглянь мою пошту і скажи що важливо», «подивись витрати за місяць і скажи куди пішло найбільше».</p>
+      <div>
+        <div class="step-title">Крок 2</div>
+        <p class="step-text">Спробуйте делегувати одну з них ШІ-асистенту. Опишіть задачу простими словами, як описали б її другу: «переглянь мою пошту і скажи що важливо», «подивись мої витрати за місяць і скажи куди пішло найбільше».</p>
       </div>
     </div>
     <div class="step-item">
       <div class="step-num">3</div>
-      <div class="step-content">
-        <div class="step-title">Не будуйте ідеальну систему одразу</div>
-        <p class="step-text">Спробуйте делегувати одну задачу і подивіться що вийде. Коли побачите результат — самі зрозумієте яку наступну хочете передати.</p>
+      <div>
+        <div class="step-title">Крок 3</div>
+        <div class="quote-block" style="margin-top:6px;">Не намагайтесь одразу побудувати ідеальну систему. Перший раз — просто спробуйте делегувати одну задачу і подивіться, що вийде. Коли побачите результат на ній, ви самі зрозумієте, яку наступну хочете передати.</div>
       </div>
     </div>
   </div>
@@ -891,33 +856,53 @@
 
 <!-- FINAL CTA -->
 <div class="cta-card">
-  <div class="cta-badge">📌 Безкоштовний вебінар</div>
-  <h2 class="cta-title">Готові повернути 14 годин на тиждень?</h2>
-  <p class="cta-sub">Робіть попередній запис і дізнайтесь як не загубитись в світі ШІ та як використовувати його для економії часу.</p>
-  <a href="register.html" target="_blank" class="btn-light">
-    Записатись безкоштовно →
-  </a>
+  <p class="cta-badge">📌 Робіть попередній запис на <strong>безкоштовний вебінар</strong> про те, як не загубитись в світі AI і як використовувати його для економії часу 👇🏻</p>
+  <div style="background:rgba(255,255,255,0.08);border-radius:var(--radius-sm);padding:14px 16px;">
+    <p style="font-size:15px;font-weight:700;color:white;margin-bottom:6px;">Як не загубитись в світі ШІ та як використовувати його для економії часу</p>
+    <p style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;text-wrap:pretty;">Заповніть будь ласка форму для попередньої реєстрації на безкоштовний вебінар. Якщо ви починаєте понеділок з відчуттям, що знову весь тиждень піде на задачі, які нікуди не рухають вас вперед — цей вебінар про це. Не про те, як стати розробником. Не про те, щоб вивчити десятки нових інструментів. А про те, щоб подивитись на свою роботу і зрозуміти: де саме я втрачаю час — і чи є спосіб це змінити без технічного досвіду.</p>
+  </div>
+  <a href="register.html" class="btn-light">Записатись безкоштовно →</a>
 </div>
 
-<!-- AUTHOR -->
-<div class="author-card">
-  <div class="author-avatar">👩‍💼</div>
-  <div>
-    <div class="author-name">Daryna Laikun</div>
-    <div class="author-role">Marketing Design Lead · AI Automator</div>
-    <a href="https://www.instagram.com/darya_moreno/" target="_blank" class="author-ig">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-      @darya_moreno
-    </a>
+<!-- INSTAGRAM POSTS -->
+<div class="ig-card">
+  <h2 class="ig-title">🗂️ Приклади автоматизації моїх робочих задач</h2>
+  <p class="ig-sub" style="margin-bottom:16px;"> </p>
+  <div class="ig-posts-grid">
+    <div class="ig-post-embed">
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/p/DWrJMTyAi39/"
+        data-instgrm-version="14"
+        style="background:#FFF;border:0;border-radius:12px;margin:0;max-width:100%;min-width:0;padding:0;width:100%;">
+      </blockquote>
+    </div>
+    <div class="ig-post-embed">
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/p/DXKCRMJAlr3/"
+        data-instgrm-version="14"
+        style="background:#FFF;border:0;border-radius:12px;margin:0;max-width:100%;min-width:0;padding:0;width:100%;">
+      </blockquote>
+    </div>
   </div>
+
+  <div class="ig-follow-callout">
+    Якщо цікаво дізнаватись більше про те, як спрощувати собі роботу, підписуйтесь 🧡
+  </div>
+
+  <a href="https://www.instagram.com/darya_moreno/" target="_blank" class="ig-follow-btn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg>
+    Daryna Laikun • @darya_moreno
+  </a>
 </div>
 
 <!-- STICKY BAR -->
 <div class="sticky-bar">
-  <a href="register.html" target="_blank" class="sticky-btn">
+  <a href="register.html" class="sticky-btn">
     Зареєструватись на вебінар — безкоштовно
   </a>
 </div>
+
+<script async src="//www.instagram.com/embed.js"></script>
 
 </body>
 </html>
