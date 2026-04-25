@@ -556,8 +556,8 @@
   <!-- SUCCESS -->
   <div class="form-card success-screen" id="successScreen">
     <span class="success-icon">🎉</span>
-    <h2 class="success-title">Дякую за реєстрацію!</h2>
-    <p class="success-text">Ми отримали вашу заявку. Надішлемо деталі вебінару на пошту ближче до дати. Не забудьте підписатись на Instagram, щоб нічого не пропустити 🧡</p>
+    <h2 class="success-title" id="successTitle">Дякую за реєстрацію!</h2>
+    <p class="success-text" id="successText">Вашу заявку успішно надіслано 💛 Я вже бачу її у себе. Деталі вебінару — дату, час і посилання — надішлю на <b id="successEmail">вашу пошту</b> ближче до події. А поки підписуйтесь на Instagram, щоб нічого не пропустити 🧡</p>
     <a href="https://www.instagram.com/darya_moreno/" target="_blank" class="back-btn">
       @darya_moreno в Instagram
     </a>
@@ -660,6 +660,14 @@
   });
 
   function showSuccess() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('invite_email').value.trim() || document.getElementById('email').value.trim();
+    if (name) {
+      document.getElementById('successTitle').textContent = `Дякую, ${name}!`;
+    }
+    if (email) {
+      document.getElementById('successEmail').textContent = email;
+    }
     document.getElementById('formHeader').classList.add('hidden');
     document.querySelectorAll('.form-card').forEach(el => el.classList.add('hidden'));
     document.getElementById('submitWrap').classList.add('hidden');

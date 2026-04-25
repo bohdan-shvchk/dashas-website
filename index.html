@@ -322,6 +322,21 @@
   .btn-light:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
 
   /* ACCORDION */
+  .ideas-card .auto-card {
+    background: transparent;
+    border-radius: 0;
+    padding: 16px 0;
+    margin: 0;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .ideas-card .auto-card:first-of-type {
+    border-top: none;
+    padding-top: 18px;
+  }
+  .ideas-card .auto-card:last-of-type {
+    padding-bottom: 4px;
+  }
+
   .auto-card {
     background: var(--card);
     border-radius: var(--radius);
@@ -635,12 +650,7 @@
 
 <!-- HERO -->
 <div class="hero-card">
-  <img class="hero-cover" src="notion.jpg" alt="Автоматизуйте рутину за допомогою ШІ"/>
   <div class="hero-body">
-    <div class="hero-tag">
-      <span class="nav-dot"></span>
-      Безкоштовний вебінар
-    </div>
     <h1 class="hero-title">Автоматизуйте рутину за допомогою ШІ</h1>
     <a href="register.html" class="btn-primary">Записатись на вебінар →</a>
     <div class="info-row">
@@ -665,7 +675,7 @@
 
 <!-- TIME TABLE -->
 <div class="card">
-  <h2 class="card-title" style="margin-bottom:16px;">⏱️ Скільки часу ви насправді витрачаєте?</h2>
+  <h2 class="card-title orange">⏱️ Скільки часу ви насправді витрачаєте?</h2>
   <table class="time-table">
     <thead>
       <tr>
@@ -716,7 +726,7 @@
 
 <!-- MID CTA -->
 <div class="cta-card">
-  <p class="cta-badge">📌 Попередній запис на <strong>безкоштовний вебінар</strong> про те, як не загубитись в світі AI і як використовувати його для економії часу 👇🏻</p>
+  <p class="cta-badge">📌 Попередній запис на <strong>безкоштовний вебінар</strong> про те 👇🏻</p>
   <div style="background:rgba(255,255,255,0.08);border-radius:var(--radius-sm);padding:14px 16px;">
     <p style="font-size:15px;font-weight:700;color:white;margin-bottom:6px;">Як не загубитись в світі ШІ та як використовувати його для економії часу</p>
     <p style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;text-wrap:pretty;">Заповніть будь ласка форму для попередньої реєстрації на безкоштовний вебінар. Якщо ви починаєте понеділок з відчуттям, що знову весь тиждень піде на задачі, які нікуди не рухають вас вперед — цей вебінар про це.</p>
@@ -724,10 +734,9 @@
   <a href="register.html" class="btn-light">Записатись на вебінар →</a>
 </div>
 
-<!-- IDEAS LABEL -->
-<div class="card">
+<!-- IDEAS CARD -->
+<div class="card ideas-card">
   <h2 class="card-title orange">💡 Ідеї для автоматизації</h2>
-</div>
 
 <!-- EMAIL -->
 <div class="auto-card">
@@ -863,6 +872,9 @@
   </details>
 </div>
 
+</div>
+<!-- /IDEAS CARD -->
+
 <!-- HOW TO START -->
 <div class="card">
   <h2 class="card-title orange">🚀 З чого почати?</h2>
@@ -887,7 +899,7 @@
       <div class="step-num">3</div>
       <div>
         <div class="step-title">Крок 3</div>
-        <div class="quote-block" style="margin-top:6px;">Не намагайтесь одразу побудувати ідеальну систему. Перший раз — просто спробуйте делегувати одну задачу і подивіться, що вийде. Коли побачите результат на ній, ви самі зрозумієте, яку наступну хочете передати.</div>
+        <p class="step-text">Не намагайтесь одразу побудувати ідеальну систему. Перший раз — просто спробуйте делегувати одну задачу і подивіться, що вийде. Коли побачите результат на ній, ви самі зрозумієте, яку наступну хочете передати.</p>
       </div>
     </div>
   </div>
@@ -895,7 +907,7 @@
 
 <!-- FINAL CTA -->
 <div class="cta-card">
-  <p class="cta-badge">📌 Робіть попередній запис на <strong>безкоштовний вебінар</strong> про те, як не загубитись в світі AI і як використовувати його для економії часу 👇🏻</p>
+  <p class="cta-badge">📌 Робіть попередній запис на <strong>безкоштовний вебінар</strong> про те👇🏻</p>
   <div style="background:rgba(255,255,255,0.08);border-radius:var(--radius-sm);padding:14px 16px;">
     <p style="font-size:15px;font-weight:700;color:white;margin-bottom:6px;">Як не загубитись в світі ШІ та як використовувати його для економії часу</p>
     <p style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;text-wrap:pretty;">Заповніть будь ласка форму для попередньої реєстрації на безкоштовний вебінар. Якщо ви починаєте понеділок з відчуттям, що знову весь тиждень піде на задачі, які нікуди не рухають вас вперед — цей вебінар про це. Не про те, як стати розробником. Не про те, щоб вивчити десятки нових інструментів. А про те, щоб подивитись на свою роботу і зрозуміти: де саме я втрачаю час — і чи є спосіб це змінити без технічного досвіду.</p>
@@ -905,7 +917,7 @@
 
 <!-- INSTAGRAM POSTS -->
 <div class="ig-card">
-  <h2 class="ig-title">🗂️ Приклади автоматизації моїх робочих задач</h2>
+  <h2 class="card-title orange">🗂️ Приклади автоматизації моїх робочих задач</h2>
   <p class="ig-sub" style="margin-bottom:16px;"> </p>
   <div class="ig-posts-grid">
     <div class="ig-post-embed">
