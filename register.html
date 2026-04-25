@@ -337,11 +337,43 @@
 
   .submit-note {
     text-align: center;
-    font-size: 12.5px;
+    font-size: 14px;
     color: var(--muted);
     margin-top: 12px;
     line-height: 1.5;
     text-wrap: pretty;
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translate(-50%, -20px);
+    background: #1C1A17;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    font-weight: 600;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+    max-width: calc(100vw - 32px);
+    text-wrap: pretty;
+  }
+  .toast.visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  .toast .toast-icon {
+    font-size: 18px;
+    flex-shrink: 0;
   }
 
   /* SUCCESS STATE */
@@ -370,7 +402,7 @@
   }
 
   .success-text {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--muted);
     margin-bottom: 28px;
     line-height: 1.6;
@@ -399,6 +431,11 @@
 </style>
 </head>
 <body>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <span class="toast-icon">✅</span>
+  <span id="toastText">Заявку успішно надіслано! Дякую 🧡</span>
+</div>
 
 <nav>
   <a href="index.html" class="nav-back">
@@ -651,12 +688,23 @@
     formSubmitted = true;
     document.getElementById('googleForm').submit();
 
+    showToast('✅ Заявку успішно надіслано! Дякую 🧡');
+
     setTimeout(() => {
       if (formSubmitted) {
         showSuccess();
       }
-    }, 3000);
+    }, 1500);
   });
+
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toastText').textContent = message.replace(/^✅\s*/, '');
+    toast.classList.add('visible');
+    setTimeout(() => {
+      toast.classList.remove('visible');
+    }, 4000);
+  }
 
   function showSuccess() {
     const name = document.getElementById('name').value.trim();
