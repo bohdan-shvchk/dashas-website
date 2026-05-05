@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Як створювати контент швидше і перестати його відкладати</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F0EDE6;
+    --card: #FFFFFF;
+    --text: #1C1A17;
+    --muted: #6B6760;
+    --accent: #D27A2D;
+    --accent-bg: #FBF0E4;
+    --btn-dark: #1C1A17;
+    --radius: 18px;
+    --radius-sm: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding-bottom: 100px;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(240, 237, 230, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .nav-logo {
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+  }
+
+  .nav-logo-slash {
+    color: var(--accent);
+    margin-right: -8px;
+  }
+
+  .nav-dot {
+    width: 8px; height: 8px;
+    background: #3DB87A;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .nav-cta {
+    background: var(--btn-dark);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.8; }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 22px;
+    margin: 0 16px 12px;
+  }
+
+  .card-label {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  /* HERO */
+  .hero-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 16px 16px 12px;
+  }
+
+  .hero-body {
+    padding: 24px 22px 28px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    background: var(--bg);
+    border-radius: 50px;
+    padding: 5px 12px;
+    margin-bottom: 16px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+    text-wrap: pretty;
+  }
+
+  .info-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+
+  .info-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg);
+    border-radius: 50px;
+    padding: 7px 13px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .btn-primary {
+    background: var(--btn-dark);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s, opacity 0.15s;
+    width: 100%;
+    justify-content: center;
+  }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* TEXT */
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+    margin-bottom: 12px;
+    text-wrap: pretty;
+  }
+
+  .card-title.orange { color: var(--accent); }
+
+  .card-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 10px;
+    text-wrap: pretty;
+  }
+
+  .card-text.dark { color: var(--text); }
+
+  /* PROBLEM LIST */
+  .problem-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .problem-item {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  /* QUOTE */
+  .quote-block {
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    background: var(--accent-bg);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 14px;
+    color: var(--text);
+    margin-top: 14px;
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  /* TIME TABLE */
+  .time-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+  }
+
+  .time-table th {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    text-align: left;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .time-table td {
+    font-size: 14px;
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    vertical-align: top;
+    line-height: 1.4;
+    color: var(--text);
+  }
+
+  .time-table td:last-child {
+    text-align: right;
+    white-space: nowrap;
+    font-weight: 600;
+    color: var(--accent);
+    padding-left: 12px;
+    min-width: 90px;
+  }
+
+  .time-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding: 12px 16px;
+    background: var(--accent);
+    border-radius: var(--radius-sm);
+    color: white;
+  }
+
+  .time-total-label { font-size: 14px; font-weight: 500; }
+  .time-total-value { font-size: 20px; font-weight: 700; }
+
+  /* CTA CARD */
+  .cta-card {
+    background: var(--btn-dark);
+    border-radius: var(--radius);
+    padding: 24px 22px;
+    margin: 0 16px 12px;
+  }
+
+  .cta-badge {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 12px;
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  .cta-badge strong { color: white; font-weight: 600; }
+
+  .btn-light {
+    background: white;
+    color: var(--btn-dark);
+    border: none;
+    border-radius: 8px;
+    padding: 14px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    transition: transform 0.15s, box-shadow 0.15s;
+    margin-top: 16px;
+  }
+  .btn-light:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+  /* ACCORDION */
+  .ideas-card .auto-card {
+    background: transparent;
+    border-radius: 0;
+    padding: 16px 0;
+    margin: 0;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .ideas-card .auto-card:first-of-type {
+    border-top: none;
+    padding-top: 18px;
+  }
+  .ideas-card .auto-card:last-of-type {
+    padding-bottom: 4px;
+  }
+
+  .auto-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin: 0 16px 10px;
+  }
+
+  details.auto-detail summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  details.auto-detail summary::-webkit-details-marker { display: none; }
+  details.auto-detail summary::after {
+    content: "+";
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--muted);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+  details.auto-detail[open] summary::after { transform: rotate(45deg); }
+
+  .auto-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .auto-icon {
+    font-size: 20px;
+    width: 40px; height: 40px;
+    background: var(--bg);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .auto-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .auto-detail-body {
+    padding-top: 16px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    margin-top: 16px;
+  }
+
+  .auto-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 12px;
+    text-wrap: pretty;
+  }
+
+  .delegate-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .delegate-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .delegate-item {
+    font-size: 14px;
+    color: var(--text);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.45;
+  }
+
+  .delegate-item::before {
+    content: "□";
+    color: var(--muted);
+    flex-shrink: 0;
+    font-size: 14px;
+    margin-top: 2px;
+  }
+
+  .result-tag {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--accent-bg);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  /* STEPS */
+  .steps-intro {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 18px;
+    text-wrap: pretty;
+  }
+
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .step-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    width: 32px; height: 32px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .step-title { font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .step-text { font-size: 14px; color: var(--muted); line-height: 1.55; text-wrap: pretty; }
+
+  /* SECTION LABEL */
+  .section-label {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    padding: 20px 16px 8px;
+  }
+
+  .section-label.large {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: -0.3px;
+    color: var(--accent);
+    padding: 24px 16px 12px;
+    text-align: left;
+  }
+
+  /* INSTAGRAM */
+  .ig-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 22px;
+    margin: 0 16px 12px;
+  }
+
+  .ig-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .ig-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 18px;
+    text-wrap: pretty;
+  }
+
+  .ig-follow-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--btn-dark);
+    color: white;
+    border-radius: 8px;
+    padding: 13px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+  .ig-follow-btn:hover { opacity: 0.8; }
+
+  .ig-follow-callout {
+    background: var(--accent-bg);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
+  /* STICKY */
+  .sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 200;
+    padding: 12px 16px 20px;
+    background: linear-gradient(to top, var(--bg) 70%, transparent);
+    pointer-events: none;
+  }
+
+  .sticky-btn {
+    background: var(--btn-dark);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 16px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    pointer-events: all;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .sticky-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(0,0,0,0.25); }
+
+  @media (min-width: 520px) {
+    nav { max-width: 480px; margin: 0 auto; border-radius: 0 0 var(--radius-sm) var(--radius-sm); }
+    .hero-card, .card, .auto-card, .cta-card, .ig-card { max-width: 480px; margin-left: auto; margin-right: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="nav-dot"></span>
+    <span class="nav-logo-slash">/</span><span>automation-webinar</span>
+  </div>
+  <a href="register.html" class="nav-cta">Реєстрація</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero-card">
+  <div class="hero-body">
+    <div class="hero-tag">✍️ Контент і автоматизація</div>
+    <h1 class="hero-title">Як створювати контент швидше і перестати його відкладати</h1>
+    <a href="register.html" class="btn-primary">Записатись на вебінар →</a>
+    <div class="info-row">
+      <span class="info-chip">🆓 Безкоштовно</span>
+      <span class="info-chip">⏱️ Без технічного досвіду</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<div class="card">
+  <h2 class="card-title orange">Чому створення контенту забирає весь вільний час?</h2>
+  <p class="card-text dark">Створення контенту — задача часозатратна і багатоетапна. Коли ти постійно в роботі, справах, навчанні, хочеться якнайбільше оптимізувати процеси, які забирають багато ресурсу, бо час і енергія обмежені, а контент потрібен регулярно.</p>
+  <p class="card-text dark">Тому я почала розбирати цей процес покроково і шукати, де можна зробити швидше, простіше і з меншим зусиллям.</p>
+  <ul class="problem-list">
+    <li class="problem-item">❌ Годинами шукаємо правильне формулювання, а думка, якою хотілось поділитись, так і залишається в голові.</li>
+    <li class="problem-item">❌ Верстаємо кожну карусель з нуля, хоча можна звести до однієї структури та шаблонів.</li>
+    <li class="problem-item">❌ Відкладаємо публікацію, бо витрачаємо багато часу на написання та редагування тексту.</li>
+  </ul>
+  <div class="quote-block">Є що сказати, але процес навколо контенту частіше забирає більше часу, ніж сама ідея.</div>
+</div>
+
+<!-- TIME TABLES -->
+<div class="card">
+  <h2 class="card-title orange">⏱️ Скільки часу потрібно на одиницю контенту?</h2>
+
+  <p class="card-text" style="font-weight:600;color:var(--text);margin-bottom:8px;">Допис-карусель:</p>
+  <table class="time-table">
+    <thead>
+      <tr>
+        <th>Дія</th>
+        <th style="text-align:right;">Час</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Написання тексту і його полірування</td>
+        <td>1,5 год</td>
+      </tr>
+      <tr>
+        <td>Пошук рефів під карусель</td>
+        <td>20 хв</td>
+      </tr>
+      <tr>
+        <td>Пошук та обробка фото</td>
+        <td>30 хв</td>
+      </tr>
+      <tr>
+        <td>Верстка — під кожну карусель різна</td>
+        <td>2 год</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="time-total" style="margin-bottom:20px;">
+    <span class="time-total-label">Разом на один допис</span>
+    <span class="time-total-value">~4,5 год</span>
+  </div>
+
+  <p class="card-text" style="font-weight:600;color:var(--text);margin-bottom:8px;">Reels:</p>
+  <table class="time-table">
+    <thead>
+      <tr>
+        <th>Дія</th>
+        <th style="text-align:right;">Час</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Написання тексту і його полірування</td>
+        <td>1,5 год</td>
+      </tr>
+      <tr>
+        <td>Виставлення кадру + зйомка</td>
+        <td>1 год</td>
+      </tr>
+      <tr>
+        <td>Переведення тексту в субтитри та розбивка по таймлайну</td>
+        <td>20 хв</td>
+      </tr>
+      <tr>
+        <td>Замороченний монтаж на компі</td>
+        <td>2 год</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="time-total">
+    <span class="time-total-label">Разом на одне відео</span>
+    <span class="time-total-value">~5 год</span>
+  </div>
+
+  <div class="quote-block" style="margin-top:14px;">
+    Якщо публікувати хоча б 2–3 дописи на тиждень, це <strong>10–15 годин</strong> тільки на контент. Саме тому ми саботуємо процес його створення.
+  </div>
+</div>
+
+<!-- FORMULA -->
+<div class="card">
+  <h2 class="card-title orange">🔧 Моя формула оптимізації процесу</h2>
+  <p class="steps-intro">Все починається не з інструментів, а з розуміння, де саме губиться час. Ось як я підходжу до цього.</p>
+  <div class="steps-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">Зафіксувати все як є</div>
+        <p class="step-text">Виписати всі дії, які роблю під час створення контенту, від найдрібніших до найбільших. Не оптимізувати одразу — спочатку просто зафіксувати.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">Знайти «больові точки»</div>
+        <p class="step-text">Подивитись, на що йде найбільше часу і що найменше хочеться робити. Саме ці процеси і треба переформатувати, щоб припинити прокрастинувати.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">Знайти рішення для кожної дії</div>
+        <p class="step-text">Для кожної часозатратної дії вже є рішення — варто тільки трішки глибше копнути. Починати треба з однієї задачі, не з усього одразу.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT CHANGED -->
+<div class="card ideas-card">
+  <h2 class="card-title orange">🎬 Що я змінила</h2>
+
+  <!-- REELS -->
+  <div class="auto-card">
+    <details class="auto-detail">
+      <summary>
+        <div class="auto-header">
+          <div class="auto-icon">🎥</div>
+          <div class="auto-title">Reels: з 5 год до ~1,5 год</div>
+        </div>
+      </summary>
+      <div class="auto-detail-body">
+        <p class="auto-desc">Переглянула кожен крок і знайшла, де можна зекономити без втрати якості.</p>
+        <table class="time-table" style="margin-bottom:14px;">
+          <thead>
+            <tr>
+              <th>Що змінила</th>
+              <th style="text-align:right;">Новий час</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Текст: чернетка голосом або письмово → ШІ підчищає помилки</td>
+              <td>20 хв</td>
+            </tr>
+            <tr>
+              <td>Кадр: знімаю напроти вікна на режимі сінематік, фон розмивається сам</td>
+              <td>20 хв</td>
+            </tr>
+            <tr>
+              <td>Монтаж: перейшла на телефон, можу робити будь-де у вільний час</td>
+              <td>50 хв</td>
+            </tr>
+            <tr>
+              <td>Субтитри: автоматично через застосунок за збереженим темплейтом</td>
+              <td>10 хв</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="result-tag" style="margin-bottom:14px;">✅ <span><strong>Економія:</strong> ~3,5 год на кожному відео.</span></div>
+        <p class="delegate-label">Інструменти:</p>
+        <ul class="delegate-list">
+          <li class="delegate-item"><strong>Edits, Prequel, Verba</strong> — монтаж, кольорокорекція, субтитри</li>
+          <li class="delegate-item"><strong>Notion</strong> — збереження ідей, текстів та контент-плану</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- CAROUSELS -->
+  <div class="auto-card">
+    <details class="auto-detail">
+      <summary>
+        <div class="auto-header">
+          <div class="auto-icon">🖼️</div>
+          <div class="auto-title">Каруселі: з 4,5 год до ~1 год</div>
+        </div>
+      </summary>
+      <div class="auto-detail-body">
+        <p class="auto-desc">Головне відкриття: не треба верстати кожен допис з нуля і заморочуватись над дизайном.</p>
+        <table class="time-table" style="margin-bottom:14px;">
+          <thead>
+            <tr>
+              <th>Що змінила</th>
+              <th style="text-align:right;">Новий час</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Текст: чернетка → ШІ розбиває на блоки за потрібною структурою</td>
+              <td>20 хв</td>
+            </tr>
+            <tr>
+              <td>Оформлення: виділяю ключові слова в нотатках, роблю скріни</td>
+              <td>20 хв</td>
+            </tr>
+            <tr>
+              <td>Верстка: скріни в Figma → вставляю в готовий шаблон</td>
+              <td>20 хв</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="result-tag" style="margin-bottom:14px;">✅ <span><strong>Економія:</strong> ~3,5 год на кожному дописі.</span></div>
+        <p class="delegate-label">Інструменти:</p>
+        <ul class="delegate-list">
+          <li class="delegate-item"><strong>Figma</strong> із заготовленими шаблонами, <strong>нотатки</strong> — оформлення тексту</li>
+          <li class="delegate-item"><strong>Gemini</strong> або <strong>Claude</strong> — підчищення та редагування тексту</li>
+          <li class="delegate-item"><strong>Notion</strong> — збереження ідей, текстів та контент-плану</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+</div>
+<!-- /WHAT CHANGED -->
+
+<!-- MID CTA -->
+<div class="cta-card">
+  <p class="cta-badge">📌 Попередній запис на <strong>безкоштовний вебінар</strong> про те 👇🏻</p>
+  <div style="background:rgba(255,255,255,0.08);border-radius:var(--radius-sm);padding:14px 16px;">
+    <p style="font-size:15px;font-weight:700;color:white;">Як не загубитись в світі ШІ та як використовувати його для економії часу</p>
+  </div>
+  <a href="register.html" class="btn-light">Записатись на вебінар →</a>
+</div>
+
+<!-- HOW TO APPLY -->
+<div class="card">
+  <h2 class="card-title orange">🚀 Як застосувати це до свого процесу</h2>
+  <p class="steps-intro">Починати треба з однієї задачі, не з найскладнішої і не з усього одразу, а з тієї, яка найбільше дратує або регулярно забирає час.</p>
+  <div class="steps-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">Один раз переналаштувати</div>
+        <p class="step-text">Щоб вийти з кола повторюваних дій, спочатку доведеться один раз витратити час на те, щоб їх переналаштувати. Цей час обов'язково окупиться.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">Зафіксувати як алгоритм</div>
+        <p class="step-text">Коли знайшли рішення, яке працює, зафіксуйте його як алгоритм — щоб наступного разу просто відкрити і робити, не думаючи з чого починати.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">Побачити результат і рухатись далі</div>
+        <p class="step-text">Коли бачиш результат на одній задачі, сам розумієш, яку наступну хочеш переформатувати.</p>
+      </div>
+    </div>
+  </div>
+  <div class="quote-block" style="margin-top:20px;">Хочете розібратись глибше? На безкоштовному вебінарі розповім, які ШІ-інструменти реально допомагають пришвидшити рутину — на конкретних прикладах і без технічних знань.</div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="cta-card">
+  <p class="cta-badge">📌 Робіть попередній запис на <strong>безкоштовний вебінар</strong> про те👇🏻</p>
+  <div style="background:rgba(255,255,255,0.08);border-radius:var(--radius-sm);padding:14px 16px;">
+    <p style="font-size:15px;font-weight:700;color:white;">Як не загубитись в світі ШІ та як використовувати його для економії часу</p>
+  </div>
+  <a href="register.html" class="btn-light">Записатись на вебінар →</a>
+</div>
+
+<!-- INSTAGRAM -->
+<div class="ig-card">
+  <h2 class="card-title orange">🧡 Підписуйтесь, щоб не пропустити</h2>
+  <div class="ig-follow-callout">
+    Якщо цікаво дізнаватись більше про те, як спрощувати собі роботу, підписуйтесь 🧡
+  </div>
+  <a href="https://www.instagram.com/darya_moreno/" target="_blank" class="ig-follow-btn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg>
+    Daryna Laikun • @darya_moreno
+  </a>
+</div>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar">
+  <a href="register.html" class="sticky-btn">
+    Реєстрація на безкоштовний вебінар
+  </a>
+</div>
+
+</body>
+</html>
