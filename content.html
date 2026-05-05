@@ -419,11 +419,13 @@
   }
 
   .delegate-item::before {
-    content: "□";
-    color: var(--muted);
+    content: "✓";
+    color: #4caf50;
     flex-shrink: 0;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 700;
     margin-top: 2px;
+    margin-right: 6px;
   }
 
   .result-tag {
@@ -724,16 +726,16 @@
     <div class="auto-detail-body" style="border-top:none;margin-top:8px;padding-top:0;">
       <div style="border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-sm);padding:16px;margin-top:8px;">
         <div class="hero-tag" style="margin-top:0;margin-bottom:4px;color:var(--text);font-weight:700;">Текст</div>
-        <p class="auto-desc" style="padding-left:12px;">Накидую голосову або письмову чернетку, віддаю ШІ, щоб підчистив і виправив помилки → <strong>20 хв</strong></p>
+        <p class="auto-desc" style="padding-left:12px;margin-bottom:0;">Накидую голосову або письмову чернетку, віддаю ШІ, щоб підчистив і виправив помилки → <strong>20 хв</strong></p>
       </div>
       <div style="border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-sm);padding:16px;margin-top:8px;">
         <div class="hero-tag" style="margin-top:0;margin-bottom:4px;color:var(--text);font-weight:700;">Кадр</div>
-        <p class="auto-desc" style="padding-left:12px;">Знімаю в кімнаті напроти вікна, на режимі сінематік. Задній фон розмиває сам, не треба заморочуватись з локацією → <strong>20 хв</strong></p>
+        <p class="auto-desc" style="padding-left:12px;margin-bottom:0;">Знімаю в кімнаті напроти вікна, на режимі сінематік. Задній фон розмиває сам, не треба заморочуватись з локацією → <strong>20 хв</strong></p>
       </div>
       <div style="border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-sm);padding:16px;margin-top:8px;">
         <div class="hero-tag" style="margin-top:0;margin-bottom:4px;color:var(--text);font-weight:700;">Монтаж</div>
-        <p class="auto-desc" style="padding-left:12px;">Перейшла на телефон — мені так швидше і психологічно легше. Можу робити будь-де, коли є вільний час → <strong>50 хв:</strong></p>
-        <ol style="padding-left:32px;margin:0;font-size:14px;color:var(--muted);line-height:1.55;">
+        <p class="auto-desc" style="padding-left:12px;margin-bottom:0;">Перейшла на телефон — мені так швидше і психологічно легше. Можу робити будь-де, коли є вільний час → <strong>50 хв:</strong></p>
+        <ol style="padding-left:32px;margin:0 0 0 0;margin-top:4px;font-size:14px;color:var(--muted);line-height:1.55;">
           <li>Підчищаю невдалі кадри</li>
           <li>Вирізаю вздохи на етапі цілісного сторітейлу</li>
           <li>Роблю кольорокорекцію</li>
@@ -741,14 +743,16 @@
       </div>
       <div style="border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-sm);padding:16px;margin-top:8px;">
         <div class="hero-tag" style="margin-top:0;margin-bottom:4px;color:var(--text);font-weight:700;">Субтитри</div>
-        <p class="auto-desc" style="padding-left:12px;">Накладаю автоматично через застосунок. Маю збережений темплейт, тому кожного разу не налаштовую з нуля → <strong>10 хв</strong></p>
+        <p class="auto-desc" style="padding-left:12px;margin-bottom:0;">Накладаю автоматично через застосунок. Маю збережений темплейт, тому кожного разу не налаштовую з нуля → <strong>10 хв</strong></p>
       </div>
       <div class="result-tag" style="margin-top:14px;margin-bottom:14px;">✅ <span>Економлю приблизно <strong>[3,5 год]</strong> на кожному відео.</span></div>
-      <p class="delegate-label">Чим користуюсь:</p>
-      <ul class="delegate-list">
-        <li class="delegate-item"><strong>Edits, Prequel, Verba</strong> — монтаж, кольорокорекція, субтитри</li>
-        <li class="delegate-item"><strong>Notion</strong> — збереження ідей, текстів та контент-плану</li>
-      </ul>
+      <div class="quote-block" style="margin-top:0;">
+        <p class="delegate-label">Чим користуюсь:</p>
+        <ul class="delegate-list" style="margin-bottom:0;">
+          <li class="delegate-item" style="display:block;"><strong>Edits, Prequel, Verba</strong> — монтаж, кольорокорекція, субтитри</li>
+          <li class="delegate-item" style="display:block;"><strong>Notion</strong> — збереження ідей, текстів та контент-плану</li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -761,24 +765,26 @@
     <div class="auto-detail-body" style="border-top:none;margin-top:8px;padding-top:0;">
       <div style="border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-sm);padding:16px;margin-top:8px;">
         <div class="hero-tag" style="margin-top:0;margin-bottom:4px;color:var(--text);font-weight:700;">Текст</div>
-        <p class="auto-desc" style="padding-left:12px;">Так само беру чернетку з текстом — часто ідеї приходять в рандомний момент, тому записую їх миттєво в нотатки. Віддаю ШІ, щоб підчистив помилки і розбив на блоки за потрібною мені структурою → <strong>20 хв</strong></p>
+        <p class="auto-desc" style="padding-left:12px;margin-bottom:0;">Так само беру чернетку з текстом — часто ідеї приходять в рандомний момент, тому записую їх миттєво в нотатки. Віддаю ШІ, щоб підчистив помилки і розбив на блоки за потрібною мені структурою → <strong>20 хв</strong></p>
       </div>
       <div style="border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-sm);padding:16px;margin-top:8px;">
         <div class="hero-tag" style="margin-top:0;margin-bottom:4px;color:var(--text);font-weight:700;">Оформлення</div>
-        <p class="auto-desc" style="padding-left:12px;">Закидаю текст в нотатки, виділяю жирним або кольором ключові слова та речення. Роблю скріни → <strong>20 хв</strong></p>
+        <p class="auto-desc" style="padding-left:12px;margin-bottom:0;">Закидаю текст в нотатки, виділяю жирним або кольором ключові слова та речення. Роблю скріни → <strong>20 хв</strong></p>
       </div>
       <div style="border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-sm);padding:16px;margin-top:8px;">
         <div class="hero-tag" style="margin-top:0;margin-bottom:4px;color:var(--text);font-weight:700;">Верстка</div>
-        <p class="auto-desc" style="padding-left:12px;">Закидаю скріни в Figma і вставляю в готовий шаблон. Не верстаю кожну карусель з нуля і не заморочуюсь над дизайном → <strong>20 хв</strong></p>
+        <p class="auto-desc" style="padding-left:12px;margin-bottom:0;">Закидаю скріни в Figma і вставляю в готовий шаблон. Не верстаю кожну карусель з нуля і не заморочуюсь над дизайном → <strong>20 хв</strong></p>
       </div>
       <div class="result-tag" style="margin-top:14px;margin-bottom:14px;">✅ <span>Економлю приблизно <strong>[3,5 год]</strong> на кожному дописі.</span></div>
-      <p class="delegate-label">Чим користуюсь:</p>
-      <ul class="delegate-list">
-        <li class="delegate-item"><strong>Figma</strong> (маю заготовки шаблонів)</li>
-          <li class="delegate-item"><strong>Нотатки</strong> — оформлення тексту</li>
-        <li class="delegate-item"><strong>Gemini</strong> або <strong>Claude</strong> для підчищення та редагування тексту</li>
-        <li class="delegate-item"><strong>Notion</strong> — збереження ідей, текстів та контент-плану</li>
-      </ul>
+      <div class="quote-block" style="margin-top:0;">
+        <p class="delegate-label">Чим користуюсь:</p>
+        <ul class="delegate-list" style="margin-bottom:0;">
+          <li class="delegate-item" style="display:block;"><strong>Figma</strong> (маю заготовки шаблонів)</li>
+          <li class="delegate-item" style="display:block;"><strong>Нотатки</strong> — оформлення тексту</li>
+          <li class="delegate-item" style="display:block;"><strong>Gemini</strong> або <strong>Claude</strong> для підчищення та редагування тексту</li>
+          <li class="delegate-item" style="display:block;"><strong>Notion</strong> — збереження ідей, текстів та контент-плану</li>
+        </ul>
+      </div>
     </div>
   </div>
 
